@@ -11,7 +11,7 @@
            
                 <div class="card">
                     <div class="card-header">
-                    <a href="{{ route('item.create') }}" class="float-right btn btn-primary btn-floating"> Tambah Data</a>
+                    <a href="{{ route('type.create') }}" class="float-right btn btn-primary btn-floating"> Tambah Data</a>
                     <h5><b>Data</b></h5>
                     </div>
                         <div class="row">
@@ -22,31 +22,20 @@
                                             <thead class="thead-primary">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Kode</th>
-                                                    <th>Jenis</th>
-                                                    <th>Ukuran</th>
-                                                    <th>Satuan</th>
-                                                    <th>Berat</th>
-                                                    <th>Harga</th>
+                                                    <th>Nama Jenis</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @php $no = 1; @endphp
-                                                @foreach($item as $data)
+                                                @foreach($type as $data)
                                                 <tr>
-                                                    <td>{{$no++}}</td>
-                                                    <td>{{$data->code}}</td>
-                                                    <td>{{$data->type}}</td>
-                                                    <td>{{$data->size}}</td>
-                                                    <td>{{$data->unit}}</td>
-                                                    <td>{{$data->weight}}</td>
-                                                    <td>{{$data->price}}</td>
-                                                    
+                                                    <td>{{$loop->iteration}}</td>
+                                                    <td>{{$data->name}}</td>
                                                     <td>
-                                                    <form action="{{ route('item.destroy', $data->id) }}"method="POST">
+                                                    <form action="{{ route('type.destroy', $data->id) }}"method="POST">
                                                         @csrf @method('delete')
-                                                        <a href="{{ route('item.edit',$data->id) }}" class="btn btn-warning">Ubah</a>
+                                                        <a href="{{ route('type.edit',$data->id) }}" class="btn btn-warning">Ubah</a>
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Hapus</button>
                                                     </form>
                                                     </td>

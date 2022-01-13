@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Item;
+use App\Type;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -29,6 +30,8 @@ class ItemController extends Controller
         //
         $item = Item::all();
         return view('item.create',compact('item'));
+        //$type = Type::all();
+        //return view('item.create',compact('type'));
     }
 
     /**
@@ -56,6 +59,7 @@ class ItemController extends Controller
         $item->unit= $request->unit;
         $item->weight = $request->weight;
         $item->price = $request->price;
+        
         $item->save();
         return redirect()->route('item.index')->with('success', 'Data Berhasil Disimpan');
     }
@@ -63,7 +67,7 @@ class ItemController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -74,7 +78,7 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -88,7 +92,7 @@ class ItemController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -117,7 +121,7 @@ class ItemController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Item  $item
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
