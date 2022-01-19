@@ -18,7 +18,7 @@
         			<input type="hidden" name="id" value="{{ request()->get('id') }}">
 
 			  		<div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
-			  			<label class="control-label">Kode</label>	
+			  			<label class="control-label">Code</label>	
 			  			<input type="text" name="code" class="form-control" value="{{ $item->code }}"  required>
 			  			@if ($errors->has('code'))
                             <span class="help-block">
@@ -27,23 +27,25 @@
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('type') ? ' has-error' : '' }}">
-                        <label for="inputType">Jenis</label>
-                        <select name="type" id="inputType" class="form-control" required>
-                        <option selected>{{ $item->type }}</option>
-                                <option value="kayu">kayu</option>
-                                <option value="batok">batok</option>
+			  		<div class="form-group {{ $errors->has('type_id') ? ' has-error' : '' }}">
+                        <label for="inputType">Type</label>
+                            <select name="type_id" id="inputType" class="form-control" required>
+                                @foreach ($type as $types)
+                                    <option value="{{$types->id}}">{{$types->name}}</option>
+                                @endforeach
                             </select>
-			  			@if ($errors->has('type'))
+                            
+                            @if ($errors->has('type_id'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('type') }}</strong>
+                                <strong>{{ $errors->first('type_id') }}</strong>
                             </span>
                         @endif
 			  		</div>
 
-                     
+                        
+                      
                     <div class="form-group {{ $errors->has('size') ? ' has-error' : '' }}">
-                        <label for="inputSize">Ukuran</label>
+                        <label for="inputSize">Size</label>
                         <select name="size" id="inputSize" class="form-control" required>
                                 <option selected>{{ $item->size }}</option>
                                 <option value="besar">besar</option>
@@ -59,7 +61,7 @@
 			  		</div>
 
                     <div class="form-group {{ $errors->has('unit') ? ' has-error' : '' }}">
-                    <label for="inputUnit">Satuan</label>
+                    <label for="inputUnit">Unit</label>
                             <select name="unit" id="inputUnit" class="form-control" required>
                                 <option selected>{{ $item->unit }}</option>
                                 <option value="kresek">kresek</option>
@@ -73,7 +75,7 @@
 			  		</div>
 			  		
                     <div class="form-group {{ $errors->has('weight') ? ' has-error' : '' }}">
-			  			<label class="control-label">Berat</label>	
+			  			<label class="control-label">Weight</label>	
 			  			<input type="text" name="weight" class="form-control" value="{{ $item->weight }}"  required>
 			  			@if ($errors->has('weight'))
                             <span class="help-block">
@@ -83,7 +85,7 @@
 			  		</div>
 
                     <div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
-			  			<label class="control-label">Harga</label>	
+			  			<label class="control-label">Price</label>	
 			  			<input type="number" name="price" class="form-control" value="{{ $item->price }}"  required>
 			  			@if ($errors->has('price'))
                             <span class="help-block">

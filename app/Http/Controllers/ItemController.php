@@ -28,10 +28,10 @@ class ItemController extends Controller
     public function create()
     {
         //
-        $item = Item::all();
-        return view('item.create',compact('item'));
-        //$type = Type::all();
-        //return view('item.create',compact('type'));
+        //$item = Item::all();
+        //return view('item.create',compact('item'));
+        $type = Type::all();
+        return view('item.create',compact('type'));
     }
 
     /**
@@ -45,7 +45,6 @@ class ItemController extends Controller
         //
         $request->validate([
             'code' => 'required',
-            'type' => 'required',
             'size' => 'required',
             'unit' => 'required',
             'weight' => 'required',
@@ -54,12 +53,11 @@ class ItemController extends Controller
         
         $item = new Item;
         $item->code = $request->code;
-        $item->type = $request->type;
+        $item->type_id = $request->type_id;
         $item->size = $request->size;
         $item->unit= $request->unit;
         $item->weight = $request->weight;
         $item->price = $request->price;
-        
         $item->save();
         return redirect()->route('item.index')->with('success', 'Data Berhasil Disimpan');
     }
@@ -100,7 +98,6 @@ class ItemController extends Controller
         //
         $this->validate($request,[
             'code' => 'required',
-            'type' => 'required',
             'size' => 'required',
             'unit' => 'required',
             'weight' => 'required',
@@ -109,7 +106,6 @@ class ItemController extends Controller
         
         $item = Item::findOrFail($id);
         $item->code = $request->code;
-        $item->type = $request->type;
         $item->size = $request->size;
         $item->unit= $request->unit;
         $item->weight = $request->weight;

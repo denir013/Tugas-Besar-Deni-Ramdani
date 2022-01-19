@@ -25,4 +25,6 @@ Route::resource('type', 'TypeController');
 Route::get('/editType/{id}','TypeController@edit')->name('editType');
 Route::get('/hapusType/{id}','TypeController@destroy')->name('hapusType');
 
-Route::resource('transaction', 'TransactionController');
+Route::resource('transaction', 'TransactionController'); 
+Route::get('/editTransaction/{id}','TransactionController@edit')->name('editTransaction');
+Route::get('/hapusTransaction/{id}','TransactionController@destroy')->name('hapusTransaction');

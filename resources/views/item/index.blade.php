@@ -11,8 +11,8 @@
            
                 <div class="card">
                     <div class="card-header">
-                    <a href="{{ route('item.create') }}" class="float-right btn btn-primary btn-floating"> Tambah Data</a>
-                    <h5><b>Data</b></h5>
+                    <a href="{{ route('item.create') }}" class="float-right btn btn-primary btn-floating"> Add Item</a>
+                    <h5><b>Item</b></h5>
                     </div>
                         <div class="row">
                              <div class="col-md-12">
@@ -22,12 +22,12 @@
                                             <thead class="thead-primary">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Kode</th>
-                                                    <th>Jenis</th>
-                                                    <th>Ukuran</th>
-                                                    <th>Satuan</th>
-                                                    <th>Berat</th>
-                                                    <th>Harga</th>
+                                                    <th>Code</th>
+                                                    <th>Type</th>
+                                                    <th>Size</th>
+                                                    <th>Unit</th>
+                                                    <th>Weight</th>
+                                                    <th>Price</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -37,17 +37,18 @@
                                                 <tr>
                                                     <td>{{$no++}}</td>
                                                     <td>{{$data->code}}</td>
-                                                    <td>{{$data->type}}</td>
+                                                    <td>{{$data->Type->name}}</td>
                                                     <td>{{$data->size}}</td>
                                                     <td>{{$data->unit}}</td>
                                                     <td>{{$data->weight}}</td>
                                                     <td>{{$data->price}}</td>
                                                     
+                                                    
                                                     <td>
                                                     <form action="{{ route('item.destroy', $data->id) }}"method="POST">
                                                         @csrf @method('delete')
-                                                        <a href="{{ route('item.edit',$data->id) }}" class="btn btn-warning">Ubah</a>
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Hapus</button>
+                                                        <a href="{{ route('item.edit',$data->id) }}" class="btn btn-warning">Update</a>
+                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Delete</button>
                                                     </form>
                                                     </td>
                                                 </tr>

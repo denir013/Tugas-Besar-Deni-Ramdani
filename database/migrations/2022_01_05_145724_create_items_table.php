@@ -16,7 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('code',5)->unique();
-            $table->string('type',20);
+            $table->integer('type_id')->nullable();
             $table->string('size',10);
             $table->string('unit',10);
             $table->string('weight',10);

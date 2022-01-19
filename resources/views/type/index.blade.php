@@ -8,11 +8,10 @@
                 {{session()->get('success')}}
             </div>
             @endif
-           
                 <div class="card">
                     <div class="card-header">
-                    <a href="{{ route('type.create') }}" class="float-right btn btn-primary btn-floating"> Tambah Data</a>
-                    <h5><b>Data</b></h5>
+                    <a href="{{ route('type.create') }}" class="float-right btn btn-primary btn-floating"> Add Type</a>
+                    <h5><b>Type</b></h5>
                     </div>
                         <div class="row">
                              <div class="col-md-12">
@@ -22,7 +21,7 @@
                                             <thead class="thead-primary">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Nama Jenis</th>
+                                                    <th>Type</th>
                                                     <th>Action</th>
                                                 </tr>
                                             </thead>
@@ -33,11 +32,11 @@
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$data->name}}</td>
                                                     <td>
-                                                    <form action="{{ route('type.destroy', $data->id) }}"method="POST">
-                                                        @csrf @method('delete')
-                                                        <a href="{{ route('type.edit',$data->id) }}" class="btn btn-warning">Ubah</a>
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Hapus</button>
-                                                    </form>
+                                                        <form action="{{ route('type.destroy', $data->id) }}"method="POST">
+                                                            @csrf @method('delete')
+                                                            <a href="{{ route('type.edit',$data->id) }}" class="btn btn-warning">Update</a>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Delete</button>
+                                                        </form>
                                                     </td>
                                                 </tr>
                                                 @endforeach
