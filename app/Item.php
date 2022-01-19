@@ -8,9 +8,12 @@ class Item extends Model
 {
     //
     protected $table = 'items';
-    protected $fillable = array('code','type','size','unit','weight', 'price','type_id');
+    protected $fillable = array('code','type_id','size_id','unit','weight', 'price');
 
     public function type(){
         return $this->belongsTo('App\Type','type_id','id');
+    }
+    public function size(){
+        return $this->belongsTo('App\Size','size_id','id');
     }
 }

@@ -38,7 +38,7 @@
                                                     <td>{{$no++}}</td>
                                                     <td>{{$data->code}}</td>
                                                     <td>{{$data->Type->name}}</td>
-                                                    <td>{{$data->size}}</td>
+                                                    <td>{{$data->Size->name}}</td>
                                                     <td>{{$data->unit}}</td>
                                                     <td>{{$data->weight}}</td>
                                                     <td>{{$data->price}}</td>

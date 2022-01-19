@@ -32,6 +32,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="{{url('item')}}">Item</a>
           <a class="dropdown-item" href="{{url('type')}}">Type</a>
+		  <a class="dropdown-item" href="{{url('size')}}">Size</a>
         </div>
 </nav>
 <div class="container">

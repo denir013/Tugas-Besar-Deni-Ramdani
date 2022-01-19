@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use App\Type;
+use App\Size;
+
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -31,7 +33,8 @@ class ItemController extends Controller
         //$item = Item::all();
         //return view('item.create',compact('item'));
         $type = Type::all();
-        return view('item.create',compact('type'));
+        $size = Size::all();
+        return view('item.create',compact('type','size'));
     }
 
     /**
@@ -45,7 +48,6 @@ class ItemController extends Controller
         //
         $request->validate([
             'code' => 'required',
-            'size' => 'required',
             'unit' => 'required',
             'weight' => 'required',
             'price' => 'required'
@@ -54,7 +56,7 @@ class ItemController extends Controller
         $item = new Item;
         $item->code = $request->code;
         $item->type_id = $request->type_id;
-        $item->size = $request->size;
+        $item->size_id = $request->size_id;
         $item->unit= $request->unit;
         $item->weight = $request->weight;
         $item->price = $request->price;
@@ -83,7 +85,9 @@ class ItemController extends Controller
     {
         //
         $item = Item::findOrFail($id);
-        return view('item.edit',compact('item'));
+        $type = Type::all();
+        $size = Size::all();
+        return view('item.edit',compact('size','type','item'));
     }
 
     /**
@@ -98,7 +102,6 @@ class ItemController extends Controller
         //
         $this->validate($request,[
             'code' => 'required',
-            'size' => 'required',
             'unit' => 'required',
             'weight' => 'required',
             'price' => 'required'
@@ -106,7 +109,8 @@ class ItemController extends Controller
         
         $item = Item::findOrFail($id);
         $item->code = $request->code;
-        $item->size = $request->size;
+        $item->type_id = $request->type_id;
+        $item->size_id = $request->size_id;
         $item->unit= $request->unit;
         $item->weight = $request->weight;
         $item->price = $request->price;

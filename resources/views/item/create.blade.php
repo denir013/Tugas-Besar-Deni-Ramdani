@@ -38,20 +38,19 @@
                         @endif
 			  		</div>
 
-                      <div class="form-group {{ $errors->has('size') ? ' has-error' : '' }}">
-                      <label for="inputSize">Size</label>
-                            <select name="size" id="inputSize" class="form-control" required>
-                                <option selected></option>
-                                <option value="besar">Besar</option>
-                                <option value="sedang">Sedang</option>
-                                <option value="kecil">Kecil</option>
-                                <option value="campur">Campur</option>
+                    <div class="form-group {{ $errors->has('size_id') ? ' has-error' : '' }}">
+                        <label for="inputSize">Size</label>
+                            <select name="size_id" id="inputSize" class="form-control" required>
+                                @foreach ($size as $sizes)
+                                    <option value="{{$sizes->id}}">{{$sizes->name}}</option>
+                                @endforeach
                             </select>
-			  			@if ($errors->has('size'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('size') }}</strong>
-                            </span>
-                        @endif
+                            
+                            @if ($errors->has('size_id'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('size_id') }}</strong>
+                                </span>
+                            @endif
 			  		</div>
 
                     <div class="form-group {{ $errors->has('unit') ? ' has-error' : '' }}">
