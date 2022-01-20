@@ -32,3 +32,7 @@ Route::get('/hapusType/{id}','TypeController@destroy')->name('hapusType');
 Route::resource('size', 'SizeController'); 
 Route::get('/editSize/{id}','SizeController@edit')->name('editSize');
 Route::get('/hapusSize/{id}','SizeController@destroy')->name('hapusSize');
+
+Route::resource('unit', 'UnitController'); 
+Route::get('/editUnit/{id}','UnitController@edit')->name('editUnit');
+Route::get('/hapusUnit/{id}','UnitController@destroy')->name('hapusUnit');

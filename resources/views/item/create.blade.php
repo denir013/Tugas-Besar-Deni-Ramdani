@@ -16,36 +16,36 @@
 					<div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
 						<label>Code</label>
 						<input type="text" class="form-control" name="code" required>
-						@if ($errors->has('code'))
-							<span class="help-block">
-                                <strong>{{ $errors->first('code') }}</strong>
-                            </span>
-                        @endif
+                            @if ($errors->has('code'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('code') }}</strong>
+                                </span>
+                            @endif
 					</div>
 
                     <div class="form-group {{ $errors->has('type_id') ? ' has-error' : '' }}">
                         <label for="inputType">Type</label>
-                            <select name="type_id" id="inputType" class="form-control" required>
+                        <select name="type_id" id="inputType" class="form-control" required>
+                            <option value="">Select Type</option>
                                 @foreach ($type as $types)
                                     <option value="{{$types->id}}">{{$types->name}}</option>
                                 @endforeach
-                            </select>
-                            
+                        </select>
                             @if ($errors->has('type_id'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('type_id') }}</strong>
-                            </span>
-                        @endif
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('type_id') }}</strong>
+                                </span>
+                            @endif
 			  		</div>
 
                     <div class="form-group {{ $errors->has('size_id') ? ' has-error' : '' }}">
                         <label for="inputSize">Size</label>
-                            <select name="size_id" id="inputSize" class="form-control" required>
+                        <select name="size_id" id="inputSize" class="form-control" required>
+                            <option value="">Select Size</option>
                                 @foreach ($size as $sizes)
                                     <option value="{{$sizes->id}}">{{$sizes->name}}</option>
                                 @endforeach
-                            </select>
-                            
+                        </select>
                             @if ($errors->has('size_id'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('size_id') }}</strong>
@@ -53,38 +53,39 @@
                             @endif
 			  		</div>
 
-                    <div class="form-group {{ $errors->has('unit') ? ' has-error' : '' }}">
-                    <label for="inputUnit">Unit</label>
-                            <select name="unit" id="inputUnit" class="form-control" required>
-                                <option selected></option>
-                                <option value="kresek">Kresek</option>
-                                <option value="karung">Karung</option>
-                            </select>
-			  			@if ($errors->has('unit'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('unit') }}</strong>
-                            </span>
-                        @endif
+                    <div class="form-group {{ $errors->has('unit_id') ? ' has-error' : '' }}">
+                        <label for="inputUnit">Unit</label>
+                        <select name="unit_id" id="inputUnit" class="form-control" required>
+                            <option value="">Select Unit</option>
+                                @foreach ($unit as $units)
+                                    <option value="{{$units->id}}">{{$units->name}}</option>
+                                @endforeach
+                        </select>
+                            @if ($errors->has('unit_id'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('unit_id') }}</strong>
+                                </span>
+                            @endif
 			  		</div>
 			  		
                     <div class="form-group {{ $errors->has('weight') ? ' has-error' : '' }}">
 			  			<label class="control-label">Weight</label>	
 			  			<input type="text" class="form-control" name="weight" required>
-			  			@if ($errors->has('weight'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('weight') }}</strong>
-                            </span>
-                        @endif
+			  			    @if ($errors->has('weight'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('weight') }}</strong>
+                                </span>
+                            @endif
 			  		</div>
 
                     <div class="form-group {{ $errors->has('price') ? ' has-error' : '' }}">
 			  			<label class="control-label">Price</label>	
 			  			<input type="number" class="form-control" name="price" required>
-			  			@if ($errors->has('price'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('price') }}</strong>
-                            </span>
-                        @endif
+                            @if ($errors->has('price'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('price') }}</strong>
+                                </span>
+                            @endif
 			  		</div>
 			  		
 			  		<div class="form-group">

@@ -21,8 +21,8 @@
 		<li class="nav-item active">
 			<a class="nav-link" href="{{url('type')}}">Type<span class="sr-only">(current)</span></a>
 		</li>-->
-		<li class="nav-item active">
-			<a class="nav-link" href="{{url('transaction')}}">Transaction<span class="sr-only">(current)</span></a>
+		<li class="nav-item">
+			<a class="nav-link" href="{{url('transaction')}}">Transaction<span class="sr-only"></span></a>
 		</li>
 
 		<li class="nav-item dropdown">
@@ -33,6 +33,7 @@
           <a class="dropdown-item" href="{{url('item')}}">Item</a>
           <a class="dropdown-item" href="{{url('type')}}">Type</a>
 		  <a class="dropdown-item" href="{{url('size')}}">Size</a>
+		  <a class="dropdown-item" href="{{url('unit')}}">Unit</a>
         </div>
 </nav>
 <div class="container">

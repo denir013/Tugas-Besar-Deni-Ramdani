@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Transaction;
+use App\Unit;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class UnitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,8 @@ class TransactionController extends Controller
     public function index()
     {
         //
-        $transaction = Transaction::all();
-        return view('transaction.index', compact('transaction'));
-        
+        $unit = Unit::all();
+        return view('unit.index',compact('unit'));
     }
 
     /**
@@ -28,8 +27,8 @@ class TransactionController extends Controller
     public function create()
     {
         //
-        $transaction = Transaction::all();
-        return view('transaction.create',compact('transaction'));
+        $unit = Unit::all();
+        return view('unit.create',compact('unit'));
     }
 
     /**
@@ -41,12 +40,20 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $unit = new Unit;
+        $unit->name = $request->name;
+        $unit->save();
+        return redirect()->route('unit.index')->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Unit $unit
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -57,34 +64,47 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Unit $unit
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
+        $unit = Unit::findOrFail($id);
+        return view('unit.edit',compact('unit'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Unit $unit
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $unit = Unit::findOrFail($id);
+        $unit->name = $request->name;
+        $unit->save();
+        return redirect()->route('unit.index')->with('success', 'Data Berhasil Disimpan');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Unit $unit
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
+        $unit = Unit::findOrFail($id);
+        $unit->delete();
+        return redirect()->route('unit.index');
     }
 }

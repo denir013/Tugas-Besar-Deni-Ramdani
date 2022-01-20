@@ -11,43 +11,47 @@
            
                 <div class="card">
                     <div class="card-header">
-                    <a href="{{ route('item.create') }}" class="float-right btn btn-primary btn-floating"> Tambah Data</a>
-                    <h5><b>Data</b></h5>
+                    <a href="{{ route('transaction.create') }}" class="float-right btn btn-primary btn-floating">New Transaction</a>
+                    <h5><b>Transaction</b></h5>
                     </div>
                         <div class="row">
                              <div class="col-md-12">
                                 <div class="card-body">
                                     <div class="table-responsive">
+
+                                    <!--<div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
+                        <label for="inputType">Code</label>
+                        <select name="code" id="code" class="form-control" required>
+                            <option value="">Select Code</option>
+                                
+                                    <option value=""></option>
+                                
+                        </select>
+                            
+			  		</div>-->
                                         <table class="table">
                                             <thead class="thead-primary">
                                                 <tr>
                                                     <th>No</th>
-                                                    <th>Kode</th>
-                                                    <th>Jenis</th>
-                                                    <th>Ukuran</th>
-                                                    <th>Satuan</th>
-                                                    <th>Berat</th>
-                                                    <th>Harga</th>
-                                                    <th>Action</th>
+                                                    <th>Date</th>
+                                                    <th>Customer Name</th>
+                                                    <th>Total Items</th>
+                                                    <th>Subtotal</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @php $no = 1; @endphp
-                                                @foreach($item as $data)
+                                                @foreach($transaction as $data)
                                                 <tr>
                                                     <td>{{$no++}}</td>
                                                     <td>{{$data->code}}</td>
                                                     <td>{{$data->type}}</td>
                                                     <td>{{$data->size}}</td>
                                                     <td>{{$data->unit}}</td>
-                                                    <td>{{$data->weight}}</td>
-                                                    <td>{{$data->price}}</td>
-                                                    
-                                                    
                                                     <td>
-                                                    <form action="{{ route('item.destroy', $data->id) }}"method="POST">
+                                                    <form action="{{ route('transaction.destroy', $data->id) }}"method="POST">
                                                         @csrf @method('delete')
-                                                        <a href="{{ route('item.edit',$data->id) }}" class="btn btn-warning">Ubah</a>
+                                                        <a href="{{ route('transaction.edit',$data->id) }}" class="btn btn-warning">Ubah</a>
                                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Hapus</button>
                                                     </form>
                                                     </td>

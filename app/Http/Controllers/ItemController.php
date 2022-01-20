@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Item;
 use App\Type;
 use App\Size;
+use App\Unit;
 
 use Illuminate\Http\Request;
 
@@ -34,7 +35,8 @@ class ItemController extends Controller
         //return view('item.create',compact('item'));
         $type = Type::all();
         $size = Size::all();
-        return view('item.create',compact('type','size'));
+        $unit = Unit::all();
+        return view('item.create',compact('type','size','unit'));
     }
 
     /**
@@ -48,7 +50,6 @@ class ItemController extends Controller
         //
         $request->validate([
             'code' => 'required',
-            'unit' => 'required',
             'weight' => 'required',
             'price' => 'required'
         ]);
@@ -57,7 +58,7 @@ class ItemController extends Controller
         $item->code = $request->code;
         $item->type_id = $request->type_id;
         $item->size_id = $request->size_id;
-        $item->unit= $request->unit;
+        $item->unit_id = $request->unit_id;
         $item->weight = $request->weight;
         $item->price = $request->price;
         $item->save();
@@ -87,7 +88,8 @@ class ItemController extends Controller
         $item = Item::findOrFail($id);
         $type = Type::all();
         $size = Size::all();
-        return view('item.edit',compact('size','type','item'));
+        $unit = Unit::all();
+        return view('item.edit',compact('unit','size','type','item'));
     }
 
     /**
@@ -102,7 +104,6 @@ class ItemController extends Controller
         //
         $this->validate($request,[
             'code' => 'required',
-            'unit' => 'required',
             'weight' => 'required',
             'price' => 'required'
         ]);
@@ -111,7 +112,7 @@ class ItemController extends Controller
         $item->code = $request->code;
         $item->type_id = $request->type_id;
         $item->size_id = $request->size_id;
-        $item->unit= $request->unit;
+        $item->unit_id = $request->unit_id;
         $item->weight = $request->weight;
         $item->price = $request->price;
         $item->save();
