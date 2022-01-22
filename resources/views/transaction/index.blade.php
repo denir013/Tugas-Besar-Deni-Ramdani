@@ -7,8 +7,7 @@
             <div class="alert alert-success">
                 {{session()->get('success')}}
             </div>
-            @endif
-           
+            @endif  
                 <div class="card">
                     <div class="card-header">
                     <a href="{{ route('transaction.create') }}" class="float-right btn btn-primary btn-floating">New Transaction</a>
@@ -17,18 +16,7 @@
                         <div class="row">
                              <div class="col-md-12">
                                 <div class="card-body">
-                                    <div class="table-responsive">
-
-                                    <!--<div class="form-group {{ $errors->has('code') ? ' has-error' : '' }}">
-                        <label for="inputType">Code</label>
-                        <select name="code" id="code" class="form-control" required>
-                            <option value="">Select Code</option>
-                                
-                                    <option value=""></option>
-                                
-                        </select>
-                            
-			  		</div>-->
+                                    <div class="table-responsive">                                 
                                         <table class="table">
                                             <thead class="thead-primary">
                                                 <tr>
@@ -44,10 +32,10 @@
                                                 @foreach($transaction as $data)
                                                 <tr>
                                                     <td>{{$no++}}</td>
-                                                    <td>{{$data->code}}</td>
-                                                    <td>{{$data->type}}</td>
-                                                    <td>{{$data->size}}</td>
-                                                    <td>{{$data->unit}}</td>
+                                                    <td>{{$data->date}}</td>
+                                                    <td>{{$data->customer_name}}</td>
+                                                    <td>{{$data->total_items}}</td>
+                                                    <td>{{$data->Subtotal}}</td>                                                
                                                     <td>
                                                     <form action="{{ route('transaction.destroy', $data->id) }}"method="POST">
                                                         @csrf @method('delete')

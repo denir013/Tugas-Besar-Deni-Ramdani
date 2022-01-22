@@ -63,6 +63,8 @@ class TransactionController extends Controller
     public function edit($id)
     {
         //
+        $transaction = Transaction::findOrFail($id);
+        return view('transaction.edit',compact('transaction'));
     }
 
     /**
@@ -86,5 +88,8 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+        $transaction = Transaction::findOrFail($id);
+        $transaction->delete();
+        return redirect()->route('transaction.index');
     }
 }
