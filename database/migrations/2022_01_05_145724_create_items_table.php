@@ -19,7 +19,7 @@ class CreateItemsTable extends Migration
             $table->integer('type_id')->nullable();
             $table->integer('size_id')->nullable();
             $table->integer('unit_id')->nullable();
-            $table->string('weight',10);
+            $table->integer('weight_id')->nullable();
             $table->integer('price');
             $table->timestamps();
         });

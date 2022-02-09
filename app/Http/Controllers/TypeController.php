@@ -47,7 +47,7 @@ class TypeController extends Controller
         $type = new Type;
         $type->name = $request->name;
         $type->save();
-        return redirect()->route('type.index')->with('success', 'Data Berhasil Disimpan');
+        return redirect()->route('type.index')->with('success', 'Type Telah Tersimpan');
     }
 
     /**
@@ -91,7 +91,7 @@ class TypeController extends Controller
         $type = Type::findOrFail($id);
         $type->name = $request->name;
         $type->save();
-        return redirect()->route('type.index')->with('success', 'Data Berhasil Disimpan');
+        return redirect()->route('type.index')->with('success', 'Type Telah Terupdate');
     }
 
     /**
@@ -105,6 +105,6 @@ class TypeController extends Controller
         //
         $type = Type::findOrFail($id);
         $type->delete();
-        return redirect()->route('type.index');
+        return redirect()->route('type.index')->with('success','Type Telah Terhapus');
     }
 }

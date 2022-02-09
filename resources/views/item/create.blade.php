@@ -68,12 +68,17 @@
                             @endif
 			  		</div>
 			  		
-                    <div class="form-group {{ $errors->has('weight') ? ' has-error' : '' }}">
-			  			<label class="control-label">Weight</label>	
-			  			<input type="text" class="form-control" name="weight" required>
-			  			    @if ($errors->has('weight'))
+                      <div class="form-group {{ $errors->has('weight_id') ? ' has-error' : '' }}">
+                        <label for="inputWeight">Weight</label>
+                        <select name="weight_id" id="inputWeight" class="form-control" required>
+                            <option value="">Select Weight</option>
+                                @foreach ($weight as $weights)
+                                    <option value="{{$weights->id}}">{{$weights->name}}</option>
+                                @endforeach
+                        </select>
+                            @if ($errors->has('weight_id'))
                                 <span class="help-block">
-                                    <strong>{{ $errors->first('weight') }}</strong>
+                                    <strong>{{ $errors->first('weight_id') }}</strong>
                                 </span>
                             @endif
 			  		</div>

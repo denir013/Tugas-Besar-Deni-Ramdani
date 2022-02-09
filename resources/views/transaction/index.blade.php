@@ -13,6 +13,7 @@
                     <a href="{{ route('transaction.create') }}" class="float-right btn btn-primary btn-floating">New Transaction</a>
                     <h5><b>Transaction</b></h5>
                     </div>
+
                         <div class="row">
                              <div class="col-md-12">
                                 <div class="card-body">
@@ -31,16 +32,15 @@
                                                 @php $no = 1; @endphp
                                                 @foreach($transaction as $data)
                                                 <tr>
-                                                    <td>{{$no++}}</td>
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td>{{$data->date}}</td>
                                                     <td>{{$data->customer_name}}</td>
                                                     <td>{{$data->total_items}}</td>
-                                                    <td>{{$data->Subtotal}}</td>                                                
+                                                    <td>{{$data->subtotal}}</td>                                                
                                                     <td>
                                                     <form action="{{ route('transaction.destroy', $data->id) }}"method="POST">
                                                         @csrf @method('delete')
-                                                        <a href="{{ route('transaction.edit',$data->id) }}" class="btn btn-warning">Ubah</a>
-                                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Hapus</button>
+                                                        
                                                     </form>
                                                     </td>
                                                 </tr>
@@ -51,6 +51,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>

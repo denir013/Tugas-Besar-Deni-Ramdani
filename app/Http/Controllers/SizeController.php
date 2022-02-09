@@ -47,7 +47,7 @@ class SizeController extends Controller
         $size = new Size;
         $size->name = $request->name;
         $size->save();
-        return redirect()->route('size.index')->with('success', 'Data Berhasil Disimpan');
+        return redirect()->route('size.index')->with('success', 'Size Telah Tersimpan');
     }
 
     /**
@@ -91,7 +91,7 @@ class SizeController extends Controller
         $size = Size::findOrFail($id);
         $size->name = $request->name;
         $size->save();
-        return redirect()->route('size.index')->with('success', 'Data Berhasil Disimpan');
+        return redirect()->route('size.index')->with('success', 'Size Telah Terupdate');
     }
     
     /**
@@ -105,6 +105,6 @@ class SizeController extends Controller
         //
         $size = Size::findOrFail($id);
         $size->delete();
-        return redirect()->route('size.index');
+        return redirect()->route('size.index')->with('success','Size Telah Terhapus');
     }
 }

@@ -18,21 +18,15 @@ Route::get('/', function () {
 });
 
 Route::resource('item', 'ItemController');
-Route::get('/editItem/{id}','ItemController@edit')->name('editItem');
-Route::get('/hapusItem/{id}','ItemController@destroy')->name('hapusItem');
 
 Route::resource('transaction', 'TransactionController'); 
 Route::get('/editTransaction/{id}','TransactionController@edit')->name('editTransaction');
 Route::get('/hapusTransaction/{id}','TransactionController@destroy')->name('hapusTransaction');
 
 Route::resource('type', 'TypeController');
-Route::get('/editType/{id}','TypeController@edit')->name('editType');
-Route::get('/hapusType/{id}','TypeController@destroy')->name('hapusType');
-
 Route::resource('size', 'SizeController'); 
-Route::get('/editSize/{id}','SizeController@edit')->name('editSize');
-Route::get('/hapusSize/{id}','SizeController@destroy')->name('hapusSize');
-
 Route::resource('unit', 'UnitController'); 
-Route::get('/editUnit/{id}','UnitController@edit')->name('editUnit');
-Route::get('/hapusUnit/{id}','UnitController@destroy')->name('hapusUnit');
+Route::resource('weight', 'WeightController'); 
+
+Route::get('/item/add','ItemController@add');//membuat sebuah routing add
+Route::post('item/addProcess','ItemController@addProcess');//membuat sebuah routing addProcess

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Unit;
+use App\Weight;
 use Illuminate\Http\Request;
 
-class UnitController extends Controller
+class WeightController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class UnitController extends Controller
     public function index()
     {
         //
-        $unit = Unit::all();
-        return view('unit.index',compact('unit'));
+        $weight = Weight::all();
+        return view('weight.index',compact('weight'));
     }
 
     /**
@@ -27,8 +27,8 @@ class UnitController extends Controller
     public function create()
     {
         //
-        $unit = Unit::all();
-        return view('unit.create',compact('unit'));
+        $weight = Weight::all();
+        return view('weight.create',compact('weight'));
     }
 
     /**
@@ -44,16 +44,16 @@ class UnitController extends Controller
             'name' => 'required'
         ]);
 
-        $unit = new Unit;
-        $unit->name = $request->name;
-        $unit->save();
-        return redirect()->route('unit.index')->with('success', 'Unit Telah Tersimpan');
+        $weight = new Weight;
+        $weight->name = $request->name;
+        $weight->save();
+        return redirect()->route('weight.index')->with('success', 'Weight Telah Tersimpan');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Unit $unit
+     * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,21 +64,21 @@ class UnitController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Unit $unit
+     * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        $unit = Unit::findOrFail($id);
-        return view('unit.edit',compact('unit'));
+        $weight = Weight::findOrFail($id);
+        return view('weight.edit',compact('weight'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Unit $unit
+     * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -88,23 +88,23 @@ class UnitController extends Controller
             'name' => 'required'
         ]);
 
-        $unit = Unit::findOrFail($id);
-        $unit->name = $request->name;
-        $unit->save();
-        return redirect()->route('unit.index')->with('success', 'Unit Telah Terupdate');
+        $weight = Weight::findOrFail($id);
+        $weight->name = $request->name;
+        $weight->save();
+        return redirect()->route('weight.index')->with('success', 'Weight Telah Terupdate');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Unit $unit
+     * @param  \App\Weight  $weight
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $unit = Unit::findOrFail($id);
-        $unit->delete();
-        return redirect()->route('unit.index')->with('success','Unit Telah Terhapus');
+        $weight = Weight::findOrFail($id);
+        $weight->delete();
+        return redirect()->route('weight.index')->with('success','Weight Telah Terhapus');
     }
 }

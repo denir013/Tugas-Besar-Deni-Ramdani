@@ -22,7 +22,7 @@
                                                 <tr>
                                                     <th>No</th>
                                                     <th>SIze</th>
-                                                    <th>Action</th>
+                                                    <td align=center><b>Action</b></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -31,11 +31,11 @@
                                                 <tr>
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{$data->name}}</td>
-                                                    <td>
+                                                    <td align=center>
                                                         <form action="{{ route('size.destroy', $data->id) }}"method="POST">
                                                             @csrf @method('delete')
-                                                            <a href="{{ route('size.edit',$data->id) }}" class="btn btn-warning">Update</a>
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Delete</button>
+                                                            <a href="{{ route('size.edit',$data->id) }}" class="btn btn-warning"><img height="25" width="25" src="{{ ('img/update.png ') }}"></a>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Ingin Menghapus Size?')"><img height="25" width="25" src="{{ ('img/delete.png ') }}"></button>
                                                         </form>
                                                     </td>
                                                 </tr>

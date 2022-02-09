@@ -11,6 +11,7 @@
            
                 <div class="card">
                     <div class="card-header">
+                    
                     <a href="{{ route('item.create') }}" class="float-right btn btn-primary btn-floating"> Add Item</a>
                     <h5><b>Item</b></h5>
                     </div>
@@ -29,26 +30,26 @@
                                                     <th>Unit</th>
                                                     <th>Weight</th>
                                                     <th>Price</th>
-                                                    <th>Action</th>
+                                                    <td align=center><b>Action</b></td>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @php $no = 1; @endphp
                                                 @foreach($item as $data)
                                                 <tr>
-                                                    <td>{{$no++}}</td>
+                                                    <td>{{$loop->iteration}}</td>
                                                     <td>{{$data->code}}</td>
                                                     <td>{{$data->Type->name}}</td>
                                                     <td>{{$data->Size->name}}</td>
                                                     <td>{{$data->Unit->name}}</td>
-                                                    <td>{{$data->weight}}</td>
+                                                    <td>{{$data->Weight->name}}</td>
                                                     <td>{{$data->price}}</td>
                                                     
-                                                    <td>
+                                                    <td align=center>
                                                         <form action="{{ route('item.destroy', $data->id) }}"method="POST">
                                                             @csrf @method('delete')
-                                                            <a href="{{ route('item.edit',$data->id) }}" class="btn btn-warning">Update</a>
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Menghapus Data?')">Delete</button>
+                                                            <a href="{{ route('item.edit',$data->id) }}" class="btn btn-warning"><img height="25" width="25" src="{{ ('img/update.png ') }}"></a>
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Ingin Menghapus Item?')"><img height="25" width="25" src="{{ ('img/delete.png ') }}"></button>
+                                                            
                                                         </form>
                                                     </td>
                                                 </tr>
@@ -59,6 +60,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                 </div>
             </div>
